@@ -1,0 +1,62 @@
+<p-toast [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"></p-toast>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                Process
+            </div>
+            <div class="card-body">
+                <p-radioButton name="group2" value="true" label="Description" [(ngModel)]="tipoFiltro" inputId="rbDescription"></p-radioButton>&nbsp;&nbsp;
+                <p-radioButton name="group2" value="false" label="Code" [(ngModel)]="tipoFiltro" inputId="rbCodeDemetech"></p-radioButton>
+                <br>
+                <br>
+                <textarea pInputTextarea [(ngModel)]="description" class="busqueda"></textarea>
+                <br>
+                <br>
+                <button type="button" (click)="Process()" class="btn btn-success btn-sm text-left"> <i class="fa fa-search"></i>&nbsp;Process</button>&nbsp;
+                <button type="button" (click)="ProcessClear()" class="btn btn-danger btn-sm text-left"> <i class="fa fa-recycle"></i>&nbsp;Clean</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                Process Result
+            </div>
+            <div class="card-body">
+                <!--Grid-->
+                <button type="button" (click)="selectedAll()" class="btn btn-success btn-sm text-left"> <i class="fa fa-check"></i>&nbsp; Select All</button>&nbsp;
+                <button type="button" (click)="AddSelectedRows()" class="btn btn-primary btn-sm text-left"> <i class="fa fa-plus"></i>&nbsp; Add to product list</button>&nbsp;
+                <button type="button" (click)="RemoveSelectedRows()" class="btn btn-warning btn-sm text-left"> <i class="fa fa-remove"></i>&nbsp;Remove Selection</button>&nbsp;
+                <button type="button" (click)="CleanResul()" class="btn btn-danger btn-sm text-left"> <i class="fa fa-recycle"></i>&nbsp;Clean Result</button>&nbsp;&nbsp;
+                <!--<button type="button" (click)="onExport()" class="btn btn-primary btn-sm text-left"> <i class="fa fa-plus"></i>&nbsp;Export</button>-->
+                <br>
+                <br>
+                <ag-grid-angular #agRevision id="agRevision" class="ag-theme-balham gridRevision" [rowData]="dataRevision" [columnDefs]="columnRevision" [defaultColDef]="ColumnEditRevision" [rowSelection]="rowSelectionRevision" (cellEditingStarted)="onCellEditingstarted($event)"
+                    (cellEditingStopped)="onCellEditingStop($event)">
+                </ag-grid-angular>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                Product List
+            </div>
+            <div class="card-body">
+                <button type="button" (click)="selectedAllProducts()" class="btn btn-success btn-sm text-left"> <i class="fa fa-check"></i>&nbsp; Select All</button>&nbsp;
+                <button type="button" (click)="RemoveSelecProduct()" class="btn btn-warning btn-sm text-left"> <i class="fa fa-remove"></i>&nbsp;Remove Selection</button>&nbsp;
+                <button type="button" (click)="CleanProducts()" class="btn btn-danger btn-sm text-left"> <i class="fa fa-recycle"></i>&nbsp;Clean list</button>
+                <br>
+                <br>
+                <ag-grid-angular #agProductos id="agProductos" class="ag-theme-balham gridRevision" [rowData]="dataProduct" [columnDefs]="columnProducts" [defaultColDef]="ColumnEditProducts" [rowSelection]="rowSelectionProducts">
+                </ag-grid-angular>
+            </div>
+        </div>
+    </div>
+</div>

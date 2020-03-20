@@ -1,0 +1,75 @@
+<div *ngIf="Loading" class="loading"></div>
+
+<div class="card">
+    <div class="card-header">
+        {{FormUser.controls['FirstName'].value + ' ' + FormUser.controls['LastName'].value}}
+    </div>
+    <div class="card-body">
+
+        <p-toast [style]="{marginTop: '80px'}">
+        </p-toast>
+
+        <form [formGroup]="FormUser">
+
+            <div class="ui-fluid">
+                <div class="ui-g-12 ui-md-3" style="text-align: center; margin: auto;">
+                    <img id="ImgProfile" [src]="ImageString" style="width: 240px; height: auto;">
+                    <p-fileUpload mode="basic" name="demo[]" url="http://localhost:8085/Services/UploadFile" method="POST" accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)" [auto]="true"></p-fileUpload>
+                </div>
+                <div class="ui-g-12 ui-md-8">
+                    <div class="ui-fluid">
+                        <div class="ui-g-12 ui-md-8">
+                            <label class="ui-float-label" for="FirstName">First Name</label>
+                            <div class="ui-inputgroup">
+                                <span class="ui-inputgroup-addon">
+                                        <i class="pi pi-info"></i>
+                                    </span>
+                                <input type="text" name="FirstName" id="FistName" formControlName="FirstName" pInputText>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="ui-g-12 ui-md-8">
+                            <label for="LastName">Last Name</label>
+                            <div class="ui-inputgroup">
+                                <span class="ui-inputgroup-addon">
+                                        <i class="pi pi-info" aria-hidden="true"></i>
+                                    </span>
+                                <input type="text" name="LastName" id="LastName" formControlName="LastName" pInputText>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="ui-g-12 ui-md-4 ui-sm-12">
+                            <label for="Email">Email</label>
+                            <div class="ui-inputgroup">
+                                <span class="ui-inputgroup-addon">
+                                    <i class="pi pi-envelope"></i>
+                                </span>
+                                <input type="text" name="Email" id="Email" formControlName="Email" pInputText>
+                            </div>
+                        </div>
+
+                        <div class="ui-g-12 ui-md-4 ui-sm-12">
+                            <label for="Phone">Phone</label>
+                            <div class="ui-inputgroup">
+                                <span class="ui-inputgroup-addon">
+                                    <i class="fa fa-phone"></i>
+                                </span>
+                                <input type="text" name="Phone" id="Phone" formControlName="Phone" pInputText>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="ui-g-12 ui-md-8">
+                        <button pButton class="ui-button-success" label="SAVE CHANGES" [disabled]="!FormUser.valid" (click)="onSubmit()"></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

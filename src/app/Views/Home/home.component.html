@@ -1,0 +1,42 @@
+<!-- Left -->
+<div class="col-md-3 left_col">
+    <div class="left_col scroll-view">
+        <!--Navbar-->
+        <app-navbar></app-navbar>
+        <!--Navbar-->
+    </div>
+</div>
+
+<!-- top navigation -->
+<div class="top_nav">
+    <div class="nav_menu">
+        <!--Header-->
+        <app-header></app-header>
+        <!--Header-->
+    </div>
+</div>
+
+<!-- Right -->
+<div class="right_col" role="main">
+    <div class="">
+        <!-- Page Title -->
+        <div class="page-title">
+            <app-breadcrumbs></app-breadcrumbs>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <!-- Page Content -->
+        <div class="row">
+            <div class="col-md-12 col-sm-12  ">
+                <div class="x_panel">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<app-footer></app-footer>
+<!-- footer -->

@@ -1,0 +1,44 @@
+<app-loading [Loading]="Loading"></app-loading>
+
+<p-toast [style]="{marginTop: '80px'}">
+</p-toast>
+
+<div class="sufee-login d-flex align-content-center flex-wrap">
+    <div class="container">
+        <div class="login-content">
+            <div class="login-logo">
+                <a href="index.html">
+                    <img class="align-content" src="/assets/images/login.png" style="margin-bottom: -55px;" alt="">
+                </a>
+            </div>
+            <div class="login-form">
+                <form [formGroup]="FormLogin" (ngSubmit)="onSubmit()" autocomplete="off">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
+                            <input type="text" pInputText formControlName="UserName" placeholder="Username" style=" width: 100%;">
+                        </div>
+                        <p-message severity="error" text="Username is required" *ngIf="!FormLogin.controls['UserName'].valid&&FormLogin.controls['UserName'].dirty"></p-message>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon">
+                                <i class="pi pi-key" style="line-height: 1.25;"></i>
+                            </span>
+                            <input type="password" pInputText formControlName="Password" placeholder="Password" style="width: 100%;">
+                        </div>
+                        <p-message severity="error" text="Password is required" *ngIf="!FormLogin.controls['Password'].valid&&FormLogin.controls['Password'].dirty"></p-message>
+                    </div>
+                    <div class="checkbox">
+                        <label class="pull-right">
+                            <a [routerLink]="['/Account/Reset']" href="#">Forgotten Password?</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-success" [disabled]="!FormLogin.valid">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

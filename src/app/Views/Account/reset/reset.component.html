@@ -1,0 +1,50 @@
+<app-loading [Loading]="Loading"></app-loading>
+
+<p-toast [style]="{marginTop: '80px'}">
+</p-toast>
+
+<p-toast position="center" key="popupRedirect" (onClose)="onRedirect()" [modal]="true" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+
+        <div style="text-align: center">
+            <i class="pi pi-check" style="font-size: 3em"></i>
+            <h3>{{message.summary}}</h3>
+            <p>{{message.detail}}</p>
+        </div>
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12">
+                <button type="button" pButton (click)="onRedirect()" label="Ok" class="ui-button-success"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>
+
+<div class="sufee-login d-flex align-content-center flex-wrap">
+    <div class="container">
+        <div class="login-content">
+            <div class="login-logo">
+                <a href="index.html">
+                    <img class="align-content" src="/assets/images/login.png" style="margin-bottom: -55px;" alt="">
+                </a>
+            </div>
+            <div class="login-form">
+                <form [formGroup]="FormReset" (ngSubmit)="onSubmit()" autocomplete="off">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
+                            <input type="text" pInputText formControlName="UserName" placeholder="Username" style=" width: 100%;">
+                        </div>
+                        <p-message severity="error" text="Username is required" *ngIf="!FormReset.controls['UserName'].valid&&FormReset.controls['UserName'].dirty"></p-message>
+                    </div>
+                    <div class="checkbox">
+                        <label class="pull-right">
+                            <a [routerLink]="['/Account/Login']" href="#">Login</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-success" [disabled]="!FormReset.valid">Reset Password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
